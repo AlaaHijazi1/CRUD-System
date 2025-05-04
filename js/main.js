@@ -301,7 +301,7 @@ function EditProduct(Id) {
 function saveEdit() {
   Swal.fire({
     title: "Do you want to save the changes?",
-    showDenyButton: false,
+    showDenyButton: true,
     showCancelButton: false,
     confirmButtonText: "Save",
     denyButtonText: `Don't save`,
