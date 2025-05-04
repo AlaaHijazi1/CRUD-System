@@ -343,6 +343,8 @@ function saveEdit() {
       }
       Swal.fire("Saved!", "", "success");
     } else if (result.isDenied) {
+      closeform();
+      clearForm();
       Swal.fire("Changes are not saved", "", "info");
     }
   });
