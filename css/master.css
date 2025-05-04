@@ -1,0 +1,77 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --colorOne: #3d3d3d;
+  --colorTwo: #cfd6c4;
+  --colorThree: #f3c3b2;
+  --colorFour: #fde8d3;
+  --colorFive: #daebe3;
+  --colorSix: #99cdd8;
+} 
+body {
+  overflow-x: hidden;
+  background-color: var(--colorOne) !important;
+}
+.title {
+  font-family: "Delius Swash Caps", serif;
+  font-size: 40px;
+  font-weight: bold;
+  background: linear-gradient(
+    to right,
+    var(--colorSix),
+    var(--colorFive),
+    var(--colorFour),
+    var(--colorThree),
+    var(--colorTwo)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.row .add-product {
+  background-color: var(--colorFive);
+}
+.row .Delete {
+  background-color: var(--colorFour);
+}
+.row .col-lg-8 .input-group span {
+  background-color: var(--colorTwo);
+}
+.row .col-lg-8 .input-group span i {
+  color: var(--colorOne);
+  cursor: pointer;
+}
+input:focus,
+select:focus,
+.btn-close:focus {
+  box-shadow: none !important;
+  border-color: var(--colorOne) !important;
+}
+table thead,
+table thead th,
+tbody td {
+  border: 2px solid var(--colorTwo);
+}
+.modal-header {
+  border: none !important;
+}
+.submit {
+  background-color: var(--colorOne) !important;
+}
+label span {
+  color: rgb(172, 0, 0);
+}
+
+.succes-alert {
+  width: 300px !important;
+  font-size: 10px !important;
+  margin: 10px 10px 0 0;
+  height: 160px;
+}
+.discard {
+  width: 350px !important;
+  font-size: 12px !important;
+} 

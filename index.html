@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/master.css" />
+    <link rel="stylesheet" href="css/all.min.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Delius+Swash+Caps&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <!-- sweet alert -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.4/dist/sweetalert2.min.css"
+    />
+    <title>Crud System</title>
+  </head>
+  <body>
+    <div class="container p-5">
+      <div class="row text-center">
+        <h1 class="title text-white">Product Crud System</h1>
+      </div>
+      <div class="row">
+        <div class="col-lg-4 col-12 d-flex justify-content-center gap-1 mt-5">
+          <button
+            class="btn add-product border-0"
+            data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop"
+          >
+            Add Product
+          </button>
+          <div
+            class="modal fade"
+            id="staticBackdrop"
+            data-bs-backdrop="static"
+            data-bs-keyboard="false"
+            tabindex="-1"
+            aria-labelledby="staticBackdropLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title ms-auto" id="staticBackdropLabel">
+                    Add Product
+                  </h5>
+                  <button
+                  id="Closeform"
+                    type="button"
+                    class="btn-close border-0"
+                    
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <form id="ProductForm">
+                    <div class="row">
+                      <div class="col">
+                        <label for="Name">Name <span>*</span></label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          required
+                          id="Name"
+                        />
+                      </div>
+                      <div class="col">
+                        <label for="Category">Category</label>
+                        <select
+                          class="form-select form-select-md mb-3"
+                          aria-label=".form-select-lg example"
+                          required
+                          id="Category"
+                        >
+                          <option value="Electronics">Electronics</option>
+                          <option value="Clothes">Clothes</option>
+                          <option value="Jewelry">Jewelry</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="row mt-2">
+                      <div class="col">
+                        <label for="price">Price <span>*</span></label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          required
+                          id="price"
+                        />
+                      </div>
+                      <div class="col">
+                        <label for="Disscount">Disscount</label>
+                        <div class="input-group">
+                          <input
+                            type="text"
+                            class="form-control"
+                            aria-label="Dollar amount (with dot and two decimal places)"
+                            id="Disscount"
+                            value="1"
+                          />
+                          <span class="input-group-text">%</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row mt-2">
+                      <div class="col">
+                        <label for="Quantity">Quantity</label>
+                        <input
+                          type="number"
+                          class="form-control"
+                          value="1"
+                          id="Quantity"
+                          min="1"
+                        />
+                      </div>
+                      <div class="col">
+                        <label for="image">Image</label>
+                        <input
+                          type="file"
+                          class="form-control file"
+                          id="image"
+                        />
+                      </div>
+                    </div>
+                    <div class="row mt-3">
+                      <div class="col text-center">
+                        <button
+                          type="submit"
+                          class="btn submit border-0 text-white"
+                          id="submit"
+                        >
+                          Add
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="btn Delete border-0" id="Deleteall">
+            Delete All Product
+          </button>
+        </div>
+        <div class="col-lg-8 mt-5">
+          <div class="input-group">
+            <input
+            id="Search"
+              type="text"
+              class="form-control border-0"
+              placeholder="Search By Name or Category"
+              aria-describedby="basic-addon2"
+            />
+            <span class="input-group-text" id="basic-addon2">
+              <i class="bi bi-search-heart-fill" id="iconsearch"></i>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-5 justify-content-center">
+        <table class="table" id="table">
+          <thead>
+            <tr>
+              <th scope="col">Num</th>
+              <th scope="col">Name</th>
+              <th scope="col">Category</th>
+              <th scope="col">Price</th>
+              <th scope="col">Disscount</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Image</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <div
+          class="modal fade"
+          id="static"
+          data-bs-backdrop="static"
+          data-bs-keyboard="false"
+          tabindex="-1"
+          aria-labelledby="staticBackdropLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div
+                class="modal-body d-flex justify-content-center align-items-center"
+              >
+                <img
+                  src=""
+                  alt="no image"
+                  id="viewPhoto"
+                  width="200"
+                  height="200"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    <script src="js/main.js"></script>
+    <script src="js/all.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <!-- sweet alert -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.4/dist/sweetalert2.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  </body>
+</html>
