@@ -89,7 +89,11 @@ isvalid();
 // start Search
 let Search = document.getElementById("Search");
 let iconSearch = document.getElementById("iconsearch");
-
+Search.addEventListener("input", () => {
+  if (Search.value === "") {
+    loadpage();
+  }
+});
 iconSearch.addEventListener("click", () => {
   let searchTerm = Search.value.trim().toLowerCase();
   if (searchTerm !== "") {
@@ -297,8 +301,8 @@ function EditProduct(Id) {
 function saveEdit() {
   Swal.fire({
     title: "Do you want to save the changes?",
-    showDenyButton: true,
-    showCancelButton: true,
+    showDenyButton: false,
+    showCancelButton: false,
     confirmButtonText: "Save",
     denyButtonText: `Don't save`,
   }).then((result) => {
@@ -327,6 +331,7 @@ function saveEdit() {
           window.localStorage.setItem("arrayOfObject", JSON.stringify(arr));
           loadpage();
           closeform();
+          clearForm();
         };
         reader.readAsDataURL(Image_file);
       } else {
